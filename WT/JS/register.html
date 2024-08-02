@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form id="registrationForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label>
+            <input type="checkbox" id="agree" name="agree">
+            I agree to the terms and conditions
+        </label><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p class="error" id="errorMessages"></p>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let errors = [];
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value;
+            const agree = document.getElementById('agree').checked;
+
+            // Check all fields are filled
+            if (!username || !password || !email || !agree) {
+                errors.push("All fields are required.");
+            }
+
+            // Validate username length
+            if (username.length < 6) {
+                errors.push("Username must be at least 6 characters long.");
+            }
+
+            // Validate email format
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                errors.push("Invalid email format.");
+            }
+
+            // Validate password
+            const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
+            if (!passwordPattern.test(password)) {
+                errors.push("Password must be 8-20 characters long, contain at least one uppercase letter, one number, and one special character.");
+            }
+
+            // Validate "I agree" checkbox
+            if (!agree) {
+                errors.push("You must agree to the terms and conditions.");
+            }
+
+            // Display errors or submit the form
+            const errorMessages = document.getElementById('errorMessages');
+            if (errors.length > 0) {
+                errorMessages.textContent = errors.join(' ');
+            } else {
+                errorMessages.textContent = "";
+                alert("Form submitted successfully!");
+                // Add actual form submission logic here
+            }
+        });
+    </script>
+</body>
+</html>

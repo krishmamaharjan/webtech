@@ -1,0 +1,37 @@
+<!-- ?xml version="1.0"> -->
+<!-- <table> -->
+<!-- namespace declaration has the following syntax. amlns:prefix="URL" -->
+<root>
+<!-- <htable xmls:h="http://www.w3.org"/TR/html4 -->
+<root xmlns:h="http://www.w3.org/TR/html4/" 
+xmlns:f="http://www.w3schools.com/furniture"> 
+<h:table> 
+<h:tr> 
+<h:td>Apples</h:td> 
+<h:td>Bananas</h:td> 
+</h:tr> 
+</h:table> 
+<f:table> 
+<f:name>African Coffee Table</f:name> 
+<f:width>80</f:width> 
+<f:length>120</f:length> 
+</f:table> 
+</root>
+
+<!-- Namespaces can be declared in the elements where they are used or in the XML root element: -->
+<!-- <root xmlns:h="http://www.w3.org/TR/html4/"  -->
+<!-- xmlns:f="http://www.w3schools.com/furniture">  -->
+
+<!DOCTYPE NEWSPAPER [ 
+<!ELEMENT NEWSPAPER (ARTICLE+)> 
+<!ELEMENT ARTICLE (HEADLINE,BYLINE,LEAD,BODY,NOTES)> 
+<!ELEMENT HEADLINE (#PCDATA)> 
+<!ELEMENT BYLINE (#PCDATA)> 
+<!ELEMENT LEAD (#PCDATA)> 
+<!ELEMENT BODY (#PCDATA)> 
+<!ELEMENT NOTES (#PCDATA)> 
+<!ATTLIST ARTICLE AUTHOR CDATA #REQUIRED> 
+<!ATTLIST ARTICLE EDITOR CDATA #IMPLIED> 
+<!ATTLIST ARTICLE DATE CDATA #IMPLIED> 
+<!ATTLIST ARTICLE EDITION CDATA #IMPLIED> 
+]> 

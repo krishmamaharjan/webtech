@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function validateForm() {
+  let x = document.forms["myForm"]["fname"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
+</script>
+</head>
+<body>
+
+<h2>JavaScript Validation</h2>
+
+<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+  Username : <input type="text" name="fname"><br><br>
+  Password : <input type="password" name="password"><br><br>
+  <input type="checkbox" name="remember" value="rem">Remember me <br><br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
